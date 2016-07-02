@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+<fullyQualifiedTypeName name="uni.sistemas.model.EmpleadoModel"/>
+<fullyQualifiedTypeName name="uni.sistemas.controller.EmpleadoController"/>
+<fullyQualifiedTypeName name="uni.sistemas.entity.Empleado"/>
+<fullyQualifiedTypeName name="uni.sistemas.model.Matematica"/>
+<fullyQualifiedTypeName name="javax.swing.JOptionPane"/>
+</qualifiedTypeNameHistroy>

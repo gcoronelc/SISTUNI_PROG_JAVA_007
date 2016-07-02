@@ -1,0 +1,142 @@
+package uni.sistemas.view;
+
+import java.awt.BorderLayout;
+import java.awt.EventQueue;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
+import javax.swing.JLabel;
+import javax.swing.JComboBox;
+import javax.swing.JTextField;
+import javax.swing.JButton;
+import java.awt.Color;
+import javax.swing.DefaultComboBoxModel;
+
+public class PromedioView extends JFrame {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	private JPanel contentPane;
+	private JTextField textField;
+	private JTextField textField_1;
+	private JTextField textField_2;
+	private JTextField textField_3;
+	private JTextField textField_4;
+	private JTextField textField_5;
+
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					PromedioView frame = new PromedioView();
+					frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+	/**
+	 * Create the frame.
+	 */
+	public PromedioView() {
+		setTitle(":: CALCULAR PROMEDIO ::");
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 420, 514);
+		contentPane = new JPanel();
+		contentPane.setBackground(Color.CYAN);
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		setContentPane(contentPane);
+		contentPane.setLayout(null);
+		
+		JLabel lblTipoDeCalificacion = new JLabel("Tipo de Calificacion");
+		lblTipoDeCalificacion.setBounds(44, 42, 104, 14);
+		contentPane.add(lblTipoDeCalificacion);
+		
+		JComboBox cboTipo = new JComboBox();
+		cboTipo.setModel(new DefaultComboBoxModel(new String[] {"Ninguno", "A", "B", "C", "D"}));
+		cboTipo.setBounds(158, 39, 86, 20);
+		contentPane.add(cboTipo);
+		
+		JLabel lblExParcial = new JLabel("Ex. Parcial");
+		lblExParcial.setBounds(83, 96, 65, 14);
+		contentPane.add(lblExParcial);
+		
+		JLabel lblExFinal = new JLabel("Ex. Final");
+		lblExFinal.setBounds(83, 131, 46, 14);
+		contentPane.add(lblExFinal);
+		
+		JLabel lblPracticas = new JLabel("Practicas");
+		lblPracticas.setBounds(83, 173, 46, 14);
+		contentPane.add(lblPracticas);
+		
+		JLabel lblTrabajos = new JLabel("Trabajos");
+		lblTrabajos.setBounds(83, 214, 46, 14);
+		contentPane.add(lblTrabajos);
+		
+		JLabel lblLaboratorios = new JLabel("Laboratorios");
+		lblLaboratorios.setBounds(83, 254, 70, 14);
+		contentPane.add(lblLaboratorios);
+		
+		JLabel lblPromedio = new JLabel("Promedio");
+		lblPromedio.setBounds(83, 298, 59, 14);
+		contentPane.add(lblPromedio);
+		
+		textField = new JTextField();
+		textField.setBounds(158, 93, 86, 20);
+		contentPane.add(textField);
+		textField.setColumns(10);
+		
+		textField_1 = new JTextField();
+		textField_1.setBounds(158, 128, 86, 20);
+		contentPane.add(textField_1);
+		textField_1.setColumns(10);
+		
+		textField_2 = new JTextField();
+		textField_2.setBounds(158, 170, 86, 20);
+		contentPane.add(textField_2);
+		textField_2.setColumns(10);
+		
+		textField_3 = new JTextField();
+		textField_3.setBounds(158, 211, 86, 20);
+		contentPane.add(textField_3);
+		textField_3.setColumns(10);
+		
+		textField_4 = new JTextField();
+		textField_4.setBounds(158, 251, 86, 20);
+		contentPane.add(textField_4);
+		textField_4.setColumns(10);
+		
+		textField_5 = new JTextField();
+		textField_5.setBounds(158, 295, 86, 20);
+		contentPane.add(textField_5);
+		textField_5.setColumns(10);
+		
+		JLabel lblEstado = new JLabel("Estado");
+		lblEstado.setBounds(83, 343, 46, 14);
+		contentPane.add(lblEstado);
+		
+		JLabel lblNulo = new JLabel("nulo");
+		lblNulo.setBounds(158, 343, 86, 14);
+		contentPane.add(lblNulo);
+		
+		JButton btnProcesar = new JButton("Procesar");
+		btnProcesar.setBounds(59, 383, 89, 23);
+		contentPane.add(btnProcesar);
+		
+		JButton btnNewButton = new JButton("Limpiar");
+		btnNewButton.setBounds(165, 383, 89, 23);
+		contentPane.add(btnNewButton);
+		
+		JButton btnSalir = new JButton("Salir");
+		btnSalir.setBounds(270, 383, 89, 23);
+		contentPane.add(btnSalir);
+	}
+}

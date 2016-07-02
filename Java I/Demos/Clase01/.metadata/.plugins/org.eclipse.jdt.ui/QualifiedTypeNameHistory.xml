@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+<fullyQualifiedTypeName name="uni.sistemas.model.PedidoModel"/>
+<fullyQualifiedTypeName name="uni.sistemas.controller.PedidoController"/>
+<fullyQualifiedTypeName name="uni.sistemas.entity.Pedido"/>
+<fullyQualifiedTypeName name="java.text.DecimalFormat"/>
+</qualifiedTypeNameHistroy>

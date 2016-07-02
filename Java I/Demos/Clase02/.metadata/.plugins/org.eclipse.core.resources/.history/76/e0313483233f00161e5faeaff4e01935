@@ -1,0 +1,5 @@
+package uni.sistemas.entity;
+
+public class Empleado {
+
+}

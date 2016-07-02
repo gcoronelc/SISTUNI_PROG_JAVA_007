@@ -1,0 +1,152 @@
+package uni.sistemas.view;
+
+import java.awt.BorderLayout;
+import java.awt.EventQueue;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
+
+import uni.sistemas.controller.EmpleadoController;
+import uni.sistemas.entity.Empleado;
+
+import javax.swing.JLabel;
+import javax.swing.JTextField;
+import javax.swing.JButton;
+import javax.swing.JTextArea;
+import java.awt.Color;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+
+public class EmpleadoView extends JFrame {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	
+	private JPanel contentPane;
+	private JTextField txtNombre;
+	private JTextField txtDias;
+	private JTextField txtHoras;
+	private JTextField txtPago;
+    private JTextArea txtBoleta;
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					EmpleadoView frame = new EmpleadoView();
+					frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+	/**
+	 * Create the frame.
+	 */
+	public EmpleadoView() {
+		setTitle(":: CALCULAR SUELDO ::");
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 364, 525);
+		contentPane = new JPanel();
+		contentPane.setBackground(Color.CYAN);
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		setContentPane(contentPane);
+		contentPane.setLayout(null);
+		
+		JLabel lblNombre = new JLabel("Nombre");
+		lblNombre.setBounds(32, 44, 70, 14);
+		contentPane.add(lblNombre);
+		
+		JLabel lblDiasTrabs = new JLabel("Dias trabs.");
+		lblDiasTrabs.setBounds(32, 83, 70, 14);
+		contentPane.add(lblDiasTrabs);
+		
+		JLabel lblHorasTrab = new JLabel("Horas trab.");
+		lblHorasTrab.setBounds(32, 126, 73, 14);
+		contentPane.add(lblHorasTrab);
+		
+		JLabel lblPagoXHora = new JLabel("Pago x Hora");
+		lblPagoXHora.setBounds(32, 165, 69, 14);
+		contentPane.add(lblPagoXHora);
+		
+		txtNombre = new JTextField();
+		txtNombre.setBounds(113, 41, 196, 20);
+		contentPane.add(txtNombre);
+		txtNombre.setColumns(10);
+		
+		txtDias = new JTextField();
+		txtDias.setBounds(113, 80, 98, 20);
+		contentPane.add(txtDias);
+		txtDias.setColumns(10);
+		
+		txtHoras = new JTextField();
+		txtHoras.setBounds(113, 123, 95, 20);
+		contentPane.add(txtHoras);
+		txtHoras.setColumns(10);
+		
+		txtPago = new JTextField();
+		txtPago.setBounds(113, 162, 99, 20);
+		contentPane.add(txtPago);
+		txtPago.setColumns(10);
+		
+		JButton btnProcesar = new JButton("Procesar");
+		btnProcesar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				calcular();
+			}
+		});
+		btnProcesar.setBounds(27, 205, 89, 23);
+		contentPane.add(btnProcesar);
+		
+		JButton btnLimpiar = new JButton("Limpiar");
+		btnLimpiar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				limpiaCajas();
+			}
+		});
+		btnLimpiar.setBounds(137, 205, 89, 23);
+		contentPane.add(btnLimpiar);
+		
+		JButton btnSalir = new JButton("Salir");
+		btnSalir.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+			}
+		});
+		btnSalir.setBounds(238, 205, 79, 23);
+		contentPane.add(btnSalir);
+		
+		txtBoleta = new JTextArea();
+		txtBoleta.setBounds(32, 239, 285, 211);
+		contentPane.add(txtBoleta);
+	}
+
+	protected void limpiaCajas() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	// instanciar objeto de la clase EmpleadoController
+	EmpleadoController obj=new EmpleadoController();
+	Empleado emp;
+	
+	protected void calcular() {
+		//crear objeto emp
+		emp=new Empleado();
+		//asignar valores al objeto emp
+		emp.setNombre(txtNombre.getText());
+		emp.setDias(Integer.parseInt(txtDias.getText()));
+		emp.setHoras(Integer.parseInt(txtHoras.getText()));
+		emp.setPago(Double.parseDouble(txtPago.getText()));
+		//ver boleta
+		txtBoleta.setText("");
+		txtBoleta.append("BOLETA DE PAGO\n"+obj.calcularSueldo(emp));		
+	}
+}

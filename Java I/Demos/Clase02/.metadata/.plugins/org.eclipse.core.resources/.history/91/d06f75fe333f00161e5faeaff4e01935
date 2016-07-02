@@ -1,0 +1,174 @@
+package uni.sistemas.view;
+
+import java.awt.BorderLayout;
+import java.awt.EventQueue;
+
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.border.EmptyBorder;
+
+import uni.sistemas.model.Matematica;
+
+import javax.swing.JLabel;
+import javax.swing.JComboBox;
+import javax.swing.JTextField;
+import javax.swing.JButton;
+import java.awt.Color;
+import javax.swing.DefaultComboBoxModel;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+
+public class PromedioView extends JFrame {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	private JPanel contentPane;
+	private JTextField txtParcial;
+	private JTextField txtFinal;
+	private JTextField txtPractica;
+	private JTextField txtTrabajo;
+	private JTextField txtLaboratorio;
+	private JTextField txtPromedio;
+    private JComboBox cboTipo;
+    
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					PromedioView frame = new PromedioView();
+					frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+	/**
+	 * Create the frame.
+	 */
+	public PromedioView() {
+		setTitle(":: CALCULAR PROMEDIO ::");
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 420, 514);
+		contentPane = new JPanel();
+		contentPane.setBackground(Color.CYAN);
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		setContentPane(contentPane);
+		contentPane.setLayout(null);
+		
+		JLabel lblTipoDeCalificacion = new JLabel("Tipo de Calificacion");
+		lblTipoDeCalificacion.setBounds(44, 42, 104, 14);
+		contentPane.add(lblTipoDeCalificacion);
+		
+		cboTipo = new JComboBox();
+		cboTipo.setModel(new DefaultComboBoxModel(new String[] {"Ninguno", "A", "B", "C", "D"}));
+		cboTipo.setBounds(158, 39, 86, 20);
+		contentPane.add(cboTipo);
+		
+		JLabel lblExParcial = new JLabel("Ex. Parcial");
+		lblExParcial.setBounds(83, 96, 65, 14);
+		contentPane.add(lblExParcial);
+		
+		JLabel lblExFinal = new JLabel("Ex. Final");
+		lblExFinal.setBounds(83, 131, 46, 14);
+		contentPane.add(lblExFinal);
+		
+		JLabel lblPracticas = new JLabel("Practicas");
+		lblPracticas.setBounds(83, 173, 46, 14);
+		contentPane.add(lblPracticas);
+		
+		JLabel lblTrabajos = new JLabel("Trabajos");
+		lblTrabajos.setBounds(83, 214, 46, 14);
+		contentPane.add(lblTrabajos);
+		
+		JLabel lblLaboratorios = new JLabel("Laboratorios");
+		lblLaboratorios.setBounds(83, 254, 70, 14);
+		contentPane.add(lblLaboratorios);
+		
+		JLabel lblPromedio = new JLabel("Promedio");
+		lblPromedio.setBounds(83, 298, 59, 14);
+		contentPane.add(lblPromedio);
+		
+		txtParcial = new JTextField();
+		txtParcial.setBounds(158, 93, 86, 20);
+		contentPane.add(txtParcial);
+		txtParcial.setColumns(10);
+		
+		txtFinal = new JTextField();
+		txtFinal.setBounds(158, 128, 86, 20);
+		contentPane.add(txtFinal);
+		txtFinal.setColumns(10);
+		
+		txtPractica = new JTextField();
+		txtPractica.setBounds(158, 170, 86, 20);
+		contentPane.add(txtPractica);
+		txtPractica.setColumns(10);
+		
+		txtTrabajo = new JTextField();
+		txtTrabajo.setBounds(158, 211, 86, 20);
+		contentPane.add(txtTrabajo);
+		txtTrabajo.setColumns(10);
+		
+		txtLaboratorio = new JTextField();
+		txtLaboratorio.setBounds(158, 251, 86, 20);
+		contentPane.add(txtLaboratorio);
+		txtLaboratorio.setColumns(10);
+		
+		txtPromedio = new JTextField();
+		txtPromedio.setBounds(158, 295, 86, 20);
+		contentPane.add(txtPromedio);
+		txtPromedio.setColumns(10);
+		
+		JLabel lblEstado = new JLabel("Estado");
+		lblEstado.setBounds(83, 343, 46, 14);
+		contentPane.add(lblEstado);
+		
+		JLabel lblNulo = new JLabel("nulo");
+		lblNulo.setBounds(158, 343, 86, 14);
+		contentPane.add(lblNulo);
+		
+		JButton btnProcesar = new JButton("Procesar");
+		btnProcesar.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				calcularPromedio();
+			}
+		});
+		btnProcesar.setBounds(59, 383, 89, 23);
+		contentPane.add(btnProcesar);
+		
+		JButton btnLimpiar = new JButton("Limpiar");
+		btnLimpiar.setBounds(165, 383, 89, 23);
+		contentPane.add(btnLimpiar);
+		
+		JButton btnSalir = new JButton("Salir");
+		btnSalir.setBounds(270, 383, 89, 23);
+		contentPane.add(btnSalir);
+	}
+
+	// crear objeto de la clase Matematica
+	Matematica mat=new Matematica();
+	
+	protected void calcularPromedio() {
+		float prom=0;
+		switch (cboTipo.getSelectedIndex()) {
+		case 1:
+			prom=mat.Promedio(Float.parseFloat(txtParcial.getText()),
+					          Float.parseFloat(txtFinal.getText()));
+			break;
+
+		default:
+			break;
+		}
+		
+		lblNulo.setText(prom+"");
+		
+		
+		
+	}
+}
